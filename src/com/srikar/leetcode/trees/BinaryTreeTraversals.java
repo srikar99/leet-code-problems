@@ -1,5 +1,7 @@
 package com.srikar.leetcode.trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTreeTraversals {
@@ -47,6 +49,9 @@ public class BinaryTreeTraversals {
 
 		System.out.println("\nMorris traversal of binary tree is ");
 		tree.morrisTraversal(tree.root);
+
+		System.out.println("\nLevel order traversal of binary tree is ");
+		tree.levelOrderTraversal(tree.root);
 	}
 
 	private void inorder(BinaryTree root) {
@@ -122,6 +127,65 @@ public class BinaryTreeTraversals {
 	}
 
 	private void morrisTraversal(BinaryTree root) {
-		// TODO
+
+		BinaryTree current, pre;
+		if (root == null)
+			return;
+
+		current = root;
+		while (current != null) {
+			if (current.left == null) {
+				System.out.print(current.key + " ");
+				current = current.right;
+			} else {
+				/* Find the inorder predecessor of current */
+				pre = current.left;
+				while (pre.right != null && pre.right != current)
+					pre = pre.right;
+
+				/* Make current as right child of its inorder predecessor */
+				if (pre.right == null) {
+					pre.right = current;
+					current = current.left;
+				}
+
+				/*
+				 * Revert the changes made in the 'if' part to restore the original tree i.e.,
+				 * fix the right child of predecessor
+				 */
+				else {
+					pre.right = null;
+					System.out.print(current.key + " ");
+					current = current.right;
+				} /* End of if condition pre->right == NULL */
+
+			} /* End of if condition current->left == NULL */
+
+		}
+	}
+	
+	private void levelOrderTraversal(BinaryTree root) {
+
+		Queue<BinaryTree> queue = new LinkedList<>();
+
+		if (root == null) {
+			return;
+		}
+
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+
+			BinaryTree temp = queue.poll();
+			System.out.print(temp.key + " ");
+
+			if (temp.left != null) {
+				queue.add(temp.left);
+			}
+
+			if (temp.right != null) {
+				queue.add(temp.right);
+			}
+		}
 	}
 }

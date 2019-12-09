@@ -1,6 +1,6 @@
 package com.srikar.leetcode.strings;
 
-public class ValidPalindromer {
+public class ValidPalindrome {
 
 	public static void main(String[] args) {
 		System.out.println(isPalindrome("0P"));
