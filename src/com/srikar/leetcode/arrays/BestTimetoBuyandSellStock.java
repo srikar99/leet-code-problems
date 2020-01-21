@@ -13,33 +13,21 @@ public class BestTimetoBuyandSellStock {
 
 	public int maxProfit(int[] prices) {
 
-		if (prices == null || prices.length == 0) {
-			return 0;
-		}
-
-		int idx = Integer.MAX_VALUE, min_value = 0;
-		int buy = 0, sell = 0;
-
-		for (int i = 0; i < prices.length; i++) {
-			if (prices[i] < idx) {
-				idx = prices[i];
-				buy = i;
-			}
-		}
-
-		for (int j = buy; j < prices.length - 1; j++) {
-			if (prices[j] > idx) {
-				if (prices[j] > sell) {
-					sell = prices[j];
-					min_value = j;
-				}
-			}
-		}
-
-		if (min_value < buy) {
-			return 0;
-		} else {
-			return prices[min_value] - prices[buy];
-		}
+		if(prices == null || prices.length == 0) {
+            return 0;
+        }
+        
+        int minprice = Integer.MAX_VALUE;
+        int max_profit = 0;
+        
+        for(int i = 0; i < prices.length; i++) {
+            if(prices[i] < minprice) {
+                minprice = prices[i];
+            } else if(prices[i] - minprice > max_profit) {
+                max_profit = prices[i] - minprice;
+            }
+        }
+        
+        return max_profit;
 	}
 }
