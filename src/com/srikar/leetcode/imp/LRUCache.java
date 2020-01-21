@@ -18,8 +18,8 @@ public class LRUCache {
 	}
 
 	public int get(int key) {
+		
 		if (cacheMap.containsKey(key)) {
-
 			lruQueue.remove(key);
 			lruQueue.addFirst(key);
 			int last = lruQueue.removeLast();

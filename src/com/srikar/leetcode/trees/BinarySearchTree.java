@@ -27,7 +27,7 @@ public class BinarySearchTree {
 		BinarySearchTree.insert(root, 3);
 		BinarySearchTree.insert(root, 6);
 		BinarySearchTree.insert(root, 10);
-
+		BinarySearchTree.insertIterative(root, 10);
 		System.out.println(searchMinimum(root));
 		System.out.println(searchMaximum(root));
 
@@ -79,6 +79,29 @@ public class BinarySearchTree {
 		}
 	}
 
+	private static Node insertIterative(Node node, int data) {
+
+		Node ref = node;
+		
+		while(ref != null) {
+			if(ref.key > data) {
+				if(ref.right == null) {
+					ref.right = new Node(data);
+				} else {
+					ref = ref.right;
+				}
+			} else {
+				if(ref.left == null) {
+					ref.left = new Node(data);
+				} else {
+					ref = ref.left;
+				}
+			}
+		}
+		
+		return ref;
+	}
+	
 	private static Node findKthMaximum(Node root, int k) {
 		// step 1: initialize current to root
 		Node current = root;

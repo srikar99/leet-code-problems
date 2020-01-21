@@ -4,16 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestArithmeticProgression {
-
-	
-	static abstract class X {
-		int x;
-		
-		public void print() {
-			System.out.println("message");
-		}
-	}
-	
 	public static void main(String[] args) {
 		int[] A = { 83, 20, 17, 43, 52, 78, 68, 45 };
 		System.out.println(lap(A));

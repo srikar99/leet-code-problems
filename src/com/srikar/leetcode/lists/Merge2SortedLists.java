@@ -2,10 +2,10 @@ package com.srikar.leetcode.lists;
 
 public class Merge2SortedLists {
 
-	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+	public ListNodeWithChild mergeTwoLists(ListNodeWithChild l1, ListNodeWithChild l2) {
 
-		ListNode d = new ListNode(0);
-		ListNode tail = d;
+		ListNodeWithChild d = new ListNodeWithChild(0);
+		ListNodeWithChild tail = d;
 
 		while (true) {
 			if (l1 == null) {
@@ -31,7 +31,7 @@ public class Merge2SortedLists {
 		return d.next;
 	}
 
-	public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
+	public ListNodeWithChild mergeTwoListsRecursive(ListNodeWithChild l1, ListNodeWithChild l2) {
 
 		if (l1 == null) {
 			return l2;
@@ -50,7 +50,7 @@ public class Merge2SortedLists {
 		}
 	}
 
-	public ListNode mergeTwoListsIterative(ListNode l1, ListNode l2) {
+	public ListNodeWithChild mergeTwoListsIterative(ListNodeWithChild l1, ListNodeWithChild l2) {
 
 		if (l1 == null) {
 			return l2;
@@ -60,7 +60,7 @@ public class Merge2SortedLists {
 			return l1;
 		}
 
-		if (l1.val < l2.val) {
+		if (l1.val <= l2.val) {
 			return mergeUtil(l1, l2);
 		} else {
 			return mergeUtil(l2, l1);
@@ -68,15 +68,15 @@ public class Merge2SortedLists {
 
 	}
 
-	private ListNode mergeUtil(ListNode l1, ListNode l2) {
+	private ListNodeWithChild mergeUtil(ListNodeWithChild l1, ListNodeWithChild l2) {
 
 		if (l1.next == null) {
 			l1.next = l2;
 			return l2;
 		}
 
-		ListNode curr1 = l1, next1 = l1.next;
-		ListNode curr2 = l2, next2 = l2.next;
+		ListNodeWithChild curr1 = l1, next1 = l1.next;
+		ListNodeWithChild curr2 = l2, next2 = l2.next;
 
 		while(curr2 != null && next1 != null) {
 			if((curr2.val) >= (curr1.val) && (curr2.val) <= (next1.val)) {

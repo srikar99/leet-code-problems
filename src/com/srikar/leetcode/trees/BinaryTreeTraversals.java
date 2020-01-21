@@ -1,6 +1,8 @@
 package com.srikar.leetcode.trees;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -35,18 +37,21 @@ public class BinaryTreeTraversals {
 		System.out.println("Preorder traversal of binary tree is ");
 		tree.preorder(tree.root);
 
-		System.out.println("\nInorder traversal of binary tree is ");
-		tree.inorder(tree.root);
-
+		System.out.println("\nPreorder traversal without recursion of binary tree is ");
+		tree.preorderWithoutRecurstion(tree.root);
+		
 		System.out.println("\nPostorder traversal of binary tree is ");
 		tree.postorder(tree.root);
 
-		System.out.println("\nPreorder traversal without recursion of binary tree is ");
-		tree.preorderWithoutRecurstion(tree.root);
+		System.out.println("\nPostorder traversal without recursion of binary tree is ");
+		tree.postorderWithoutRecursion(tree.root);
 
+		System.out.println("\nInorder traversal of binary tree is ");
+		tree.inorder(tree.root);
+		
 		System.out.println("\nInorder traversal without recursion of binary tree is ");
 		tree.inorderWithoutRecursion(tree.root);
-
+		
 		System.out.println("\nMorris traversal of binary tree is ");
 		tree.morrisTraversal(tree.root);
 
@@ -188,4 +193,49 @@ public class BinaryTreeTraversals {
 			}
 		}
 	}
+	
+	private List<Integer> postorderWithoutRecursion(BinaryTree root) {
+        
+        Stack<BinaryTree> s = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        
+        BinaryTree prev = null;
+        if(root == null) {
+            return list;
+        }
+        
+        s.push(root);
+        
+        while(!s.isEmpty()) {
+        	BinaryTree current = s.peek();
+            
+            if(prev == null || prev.left == current || prev.right == current) {
+                if(current.left != null) {
+                    s.push(current.left);
+                } else if(current.right != null) {
+                    s.push(current.right);
+                } else {
+                	BinaryTree node = s.pop();
+                	System.out.print(node.key + " ");
+                    list.add(node.key);
+                }
+            } else if(current.left == prev) {
+                if(current.right != null) {
+                    s.push(current.right);
+                } else {
+                	BinaryTree node = s.pop();
+                	System.out.print(node.key + " ");
+                    list.add(node.key);
+                }
+            } else if(current.right == prev) {
+            	BinaryTree node = s.pop();
+            	System.out.print(node.key + " ");
+                list.add(node.key);
+            }
+            
+            prev = current;
+        }
+        
+        return list;
+    }
 }

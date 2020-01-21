@@ -4,8 +4,17 @@ public class CountPrimes {
 
 	public static void main(String[] args) {
 		System.out.println(countPrimes(10));
+		print();
 	}
 	
+	private static void print() {
+
+		for(int i = 0; i < 64; i++) {
+			System.out.println((char) i);
+		}
+		
+	}
+
 	private static int countPrimes(int n) {
 		
 		boolean[] isPrime = new boolean[n];
