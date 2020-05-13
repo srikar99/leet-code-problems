@@ -19,7 +19,7 @@ public class ValidAnagram {
 	// using hashing technique
 	private static boolean isAnagram(String s, String t, int length) {
 		
-		int[] counter = new int[length];
+		int[] counter = new int[26];
 		
 		if(s.length() != t.length()) {
 			return false;

@@ -5,17 +5,42 @@ public class RotateArray {
 	public static void main(String[] args) {
 		int[] A = { 1, 2, 3, 4, 5, 6, 7 };
 		int[] AA = { 1, 2, 3, 4, 5, 6, 7 };
-		int k = 3;
+
+		int[] arr = { 1, 2, 3, 4, 5 };
+
+		int k = 4;
 
 		rotate(A, k);
 		rotateUsingReverse(AA, k);
+		leftRotate(arr, k);
 
-		for (int a : A) {
+		/*for (int a : A) {
 			System.out.print(a + " ");
 		}
 		System.out.println();
 		for (int a : AA) {
 			System.out.print(a + " ");
+		}*/
+	}
+
+	private static void leftRotate(int[] a, int d) {
+		int n = a.length;
+		int[] temp = new int[d];
+
+		for (int i = 0; i < d; i++) {
+			temp[i] = a[i];
+		}
+
+		for (int i = 0; i < (n - d); i++) {
+			a[i] = a[i + d];
+		}
+
+		for (int i = (n-d), j = 0; i < n && j < d; i++, j++) {
+			a[i] = temp[j];
+		}
+
+		for (int i = 0; i < n; i++) {
+			System.out.print(a[i] + " ");
 		}
 	}
 

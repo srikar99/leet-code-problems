@@ -1,27 +1,33 @@
 package com.srikar.leetcode.integers;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class HappyNumber {
 
 	public static void main(String[] args) {
 		HappyNumber happyNumber = new HappyNumber();
 		happyNumber.isHappy(19);
 	}
-	
+
 	public boolean isHappy(int n) {
 
-		while (n != 1) {
-			int x = n % 10;
-			int y = n / 10;
-			int z = 0;
-			
-			if(y == 10) {
-				z = y % 10;
-				y = y / 10;
+		Set<Integer> inLoop = new HashSet<Integer>();
+		int squareSum, remain;
+		
+		while (inLoop.add(n)) {
+			squareSum = 0;
+			while (n > 0) {
+				remain = n % 10;
+				squareSum += remain * remain;
+				n /= 10;
 			}
-			
-			n = y * y + x * x + z * z;
-		}
+			if (squareSum == 1)
+				return true;
+			else
+				n = squareSum;
 
-		return true;
+		}
+		return false;
 	}
 }

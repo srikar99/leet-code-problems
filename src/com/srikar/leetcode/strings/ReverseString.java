@@ -22,6 +22,7 @@ public class ReverseString {
 			char t = s[start];
 			s[start] = s[end];
 			s[end] = t;
+			
 			start++;
 			end--;
 		}

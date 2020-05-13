@@ -1,6 +1,7 @@
 package com.srikar.leetcode.arrays;
 
 public class MaxSlidingWindow {
+	
 	static void printKMax(int arr[], int n, int k) {
 		int j, max;
 

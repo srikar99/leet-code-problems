@@ -3,6 +3,7 @@ package com.srikar.leetcode.integers;
 public class ClimbingStairs {
 	
 	public static void main(String[] args) {
+		main(null);
 		int numberOfSteps = climbStairs(44);
 		System.out.println(numberOfSteps);
 	}

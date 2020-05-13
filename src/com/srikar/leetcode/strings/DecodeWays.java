@@ -18,7 +18,7 @@ package com.srikar.leetcode.strings;
 public class DecodeWays {
 
 	public static void main(String[] args) {
-		String s = "1";
+		String s = "12";
 		int count = decodeWays(s);
 
 		System.out.println(count);

@@ -8,11 +8,8 @@ public class ValidPalindrome {
 	}
 
 	private static boolean isPalindrome(String s) {
-		String replace = s.toLowerCase().replaceAll("[[^a-z][^0-9]", "");
-
-		System.out.println(replace);
-		for (int i = 0; i < replace.length() / 2; i++) {
-			if (replace.charAt(i) != replace.charAt(replace.length() - i - 1)) {
+		for (int i = 0; i < s.length() / 2; i++) {
+			if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
 				return false;
 			}
 		}

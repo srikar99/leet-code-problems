@@ -56,7 +56,7 @@ public class BinaryTreeTraversals {
 		tree.morrisTraversal(tree.root);
 
 		System.out.println("\nLevel order traversal of binary tree is ");
-		tree.levelOrderTraversal(tree.root);
+		tree.bfs(tree.root);
 	}
 
 	private void inorder(BinaryTree root) {
@@ -169,7 +169,7 @@ public class BinaryTreeTraversals {
 		}
 	}
 	
-	private void levelOrderTraversal(BinaryTree root) {
+	private void bfs(BinaryTree root) {
 
 		Queue<BinaryTree> queue = new LinkedList<>();
 

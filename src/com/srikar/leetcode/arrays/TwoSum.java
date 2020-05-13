@@ -1,5 +1,8 @@
 package com.srikar.leetcode.arrays;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given an array of integers, return indices of the two numbers such that they
  * add up to a specific target.
@@ -21,8 +24,12 @@ public class TwoSum {
 	public static void main(String[] args) {
 		int[] nums = { 3, 2, 4 };
 		int[] arr = twoSum(nums, 6);
+		int[] nums1 = { 3, 2, 4 };
+		int[] arr1 = twoSumHash(nums1, 6);
 		System.out.println(arr[0]);
 		System.out.println(arr[1]);
+		System.out.println(arr1[0]);
+		System.out.println(arr1[1]);
 	}
 
 	// brute force approach
@@ -39,5 +46,27 @@ public class TwoSum {
 			}
 		}
 		return returnArray;
+	}
+
+	private static int[] twoSumHash(int[] A, int t) {
+
+		int[] res = { -1, -1 };
+
+		Set<Integer> set = new HashSet<>();
+		
+		for(int i = 0; i < A.length; i++) {
+
+			if(set.contains(A[i])) {
+				res[1] = i;
+			}
+			
+			set.add(t-A[i]);
+		}
+		
+		for(int i = 0; i < A.length; i++) {
+			if(t - A[res[1]] == A[i]) res[0] = i;
+		}
+		
+		return res;
 	}
 }

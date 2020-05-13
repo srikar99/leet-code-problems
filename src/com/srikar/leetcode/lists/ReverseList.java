@@ -8,8 +8,12 @@ public class ReverseList {
 		ListNode node = null;
 
 		while (curr != null) {
+			
+			// forward the current pointer
 			next = curr.next;
+			// keep track of previous pointers
 			curr.next = prev;
+			// reset to proper pointers
 			prev = curr;
 			curr = next;
 		}
