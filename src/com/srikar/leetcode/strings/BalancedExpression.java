@@ -33,10 +33,6 @@ public class BalancedExpression {
             }
         }
         
-        if(s.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+       return s.isEmpty();
     }
 }

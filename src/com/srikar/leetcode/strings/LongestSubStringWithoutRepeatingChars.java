@@ -39,7 +39,6 @@ public class LongestSubStringWithoutRepeatingChars {
 		return true;
 	}
 
-	// gfg approach
 	private static int longestSubstring(String s) {
 
 		int l = s.length();
